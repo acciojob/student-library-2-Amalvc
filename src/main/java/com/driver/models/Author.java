@@ -31,6 +31,12 @@ public class Author {
 
     public Author() {
     }
+    public Author(String name,int age,String email,String country){
+        this.name=name;
+        this.age=age;
+        this.email=email;
+        this.country=country;
+    }
 
 }
 
