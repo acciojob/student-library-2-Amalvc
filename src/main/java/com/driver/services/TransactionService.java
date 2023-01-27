@@ -103,7 +103,7 @@ public class TransactionService {
         long days = TimeUnit.DAYS.convert(time, TimeUnit.MILLISECONDS);
         int fine = 0;
         if(days > getMax_allowed_days){
-            fine = (int)((days - getMax_allowed_days) * fine_per_day);
+            fine = (int)(days - getMax_allowed_days) * fine_per_day;
         }
         Book book=transaction.getBook();
         //Card card=cardRepository5.findById(cardId).get();
