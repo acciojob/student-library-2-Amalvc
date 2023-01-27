@@ -18,7 +18,7 @@ public class StudentController {
     @GetMapping("/get_by_email")
     public ResponseEntity<String> getStudentByEmail(@RequestParam("email") String email){
         String ans=studentService.getDetailsByEmail(email).toString();
-        return new ResponseEntity<>(ans, HttpStatus.OK);
+        return new ResponseEntity<>("student details"+ans, HttpStatus.OK);
     }
 
     //Add required annotations
@@ -26,7 +26,7 @@ public class StudentController {
     public ResponseEntity getStudentById(@RequestParam("id") int id){
         String ans=studentService.getDetailsById(id).toString();
 
-        return new ResponseEntity<>(ans, HttpStatus.OK);
+        return new ResponseEntity<>("student details"+ans, HttpStatus.OK);
     }
 
     //Add required annotations
