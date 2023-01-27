@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Data
+
 @Builder
 @AllArgsConstructor
 public class Card {
@@ -41,4 +41,53 @@ public class Card {
     public Card(){
         this.cardStatus = CardStatus.ACTIVATED;
     }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public void setCardStatus(CardStatus cardStatus) {
+        this.cardStatus = cardStatus;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public Date getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public CardStatus getCardStatus() {
+        return cardStatus;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
 }

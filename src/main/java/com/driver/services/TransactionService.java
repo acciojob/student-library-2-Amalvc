@@ -110,12 +110,17 @@ public class TransactionService {
         book.setAvailable(true);
         book.setCard(null);
         bookRepository5.updateBook(book);
-        Transaction returnBookTransaction=Transaction.builder().book(book).transactionStatus(TransactionStatus.SUCCESSFUL).transactionId(UUID.randomUUID().toString()).fineAmount(fine).card(transaction.getCard()).isIssueOperation(true).build();
+        Transaction t=new Transaction();
+        t.setBook(transaction.getBook());
+        t.setCard(transaction.getCard());
+        t.setIssueOperation(true);
+        t.setFineAmount(fine);
+        t.setTransactionStatus(TransactionStatus.SUCCESSFUL);
         //cardRepository5.save(card);
 
 
 
-        transactionRepository5.save(returnBookTransaction);
-        return returnBookTransaction; //return the transaction after updating all details
+        transactionRepository5.save(t);
+        return t; //return the transaction after updating all details
     }
 }

@@ -36,8 +36,7 @@ public class StudentService {
 
     public void createStudent(Student student){
         Card card=cardService4.createAndReturn(student);
-        student.setCard(card);
-        cardRepository.save(card);
+
 
     }
 
@@ -48,9 +47,7 @@ public class StudentService {
 
     public void deleteStudent(int id){
         //Delete student and deactivate corresponding card
-        Card card=studentRepository4.findById(id).get().getCard();
-        studentRepository4.deleteCustom(id);
-        card.setCardStatus(CardStatus.DEACTIVATED);
-        cardRepository.save(card);
+       cardService4.deactivateCard(id);
+       studentRepository4.deleteCustom(id);
     }
 }

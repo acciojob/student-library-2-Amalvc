@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Data
+
 @Builder
 @AllArgsConstructor
 public class Student {
@@ -63,5 +63,68 @@ public class Student {
                 '}';
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public Date getUpdatedOn() {
+        return updatedOn;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public void setUpdatedOn(Date updatedOn) {
+        this.updatedOn = updatedOn;
+    }
 
 }
