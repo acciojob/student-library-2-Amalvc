@@ -2,11 +2,13 @@ package com.driver.services;
 
 import com.driver.models.Author;
 import com.driver.models.Book;
+import com.driver.models.Genre;
 import com.driver.repositories.AuthorRepository;
 import com.driver.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.GeneratedValue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,30 +22,24 @@ public class BookService {
     private AuthorRepository authorRepository;
 
     public void createBook(Book book){
-        int id=book.getAuthor().getId();
-        Author author=authorRepository.findById(id).get();
-        book.setAuthor(author);
-        List<Book>list=author.getBooksWritten();
-        list.add(book);
-        author.setBooksWritten(list);
-        authorRepository.save(author);
+        bookRepository2.save(book);
 
     }
 
     public List<Book> getBooks(String genre, boolean available, String author){
         List<Book> books = new ArrayList<>();
-        if(author!=null){
-            books=bookRepository2.findBooksByAuthor(author,available);
+        if(genre!=null && author!=null){
+            return bookRepository2.findBooksByGenreAuthor(genre,author,available);
         }
         else if(genre!=null){
-            books=bookRepository2.findBooksByGenre(genre,available);
+            return bookRepository2.findBooksByGenre(genre,available);
         }
-        else if(author!=null && genre!=null){
-            books=bookRepository2.findBooksByGenreAuthor(genre,author,available);
+        else if(author!=null){
+            return bookRepository2.findBooksByAuthor(author,available);
         }
         else{
-            books=bookRepository2.findByAvailability(available);
+            return bookRepository2.findByAvailability(available);
         }
-        return books;
+
     }
 }

@@ -21,15 +21,15 @@ public class StudentService {
     private CardRepository cardRepository;
 
     public Student getDetailsByEmail(String email){
-        Student student = null;
-        student=studentRepository4.findByEmailId(email);
+
+        Student student=studentRepository4.findByEmailId(email);
 
         return student;
     }
 
     public Student getDetailsById(int id){
-        Student student = null;
-        student=studentRepository4.findById(id).get();
+
+        Student student=studentRepository4.findById(id).get();
 
         return student;
     }

@@ -11,9 +11,6 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Data
-@Builder
-@AllArgsConstructor
 public class Transaction{
 
     @Id
@@ -45,5 +42,75 @@ public class Transaction{
     public Transaction(){
 
     }
+    public Transaction(String transactionId,Card card,Book book,int fineAmount,boolean isIssueOperation,TransactionStatus transactionStatus,Date transactionDate){
+       this.transactionId=transactionId;
+       this.card=card;
+       this.book=book;
+       this.fineAmount=fineAmount;
+       this.isIssueOperation=isIssueOperation;
+       this.transactionStatus=transactionStatus;
+       this.transactionDate=transactionDate;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public int getFineAmount() {
+        return fineAmount;
+    }
+
+    public Date getTransactionDate() {
+        return transactionDate;
+    }
+
+    public TransactionStatus getTransactionStatus() {
+        return transactionStatus;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public void setFineAmount(int fineAmount) {
+        this.fineAmount = fineAmount;
+    }
+
+    public void setIssueOperation(boolean issueOperation) {
+        isIssueOperation = issueOperation;
+    }
+
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
+    }
+
+    public void setTransactionStatus(TransactionStatus transactionStatus) {
+        this.transactionStatus = transactionStatus;
+    }
+
 }
 

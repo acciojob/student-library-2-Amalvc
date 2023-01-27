@@ -46,7 +46,7 @@ public class TransactionService {
         transaction.setCard(card);
         transaction.setIssueOperation(true);
 
-        if(book==null ||  !book.isAvailable()){
+        if(book==null ||!book.isAvailable()){
             transaction.setTransactionStatus(TransactionStatus.FAILED);
             transactionRepository5.save(transaction);
             throw new Exception("Book is either unavailable or not present");
@@ -109,6 +109,10 @@ public class TransactionService {
         //Card card=cardRepository5.findById(cardId).get();
         book.setAvailable(true);
         book.setCard(null);
+        Card card=cardRepository5.findById(cardId).get();
+        List<Book>bklist=card.getBooks();
+        bklist.remove(book);
+        cardRepository5.save(card);
         bookRepository5.updateBook(book);
         Transaction t=new Transaction();
         t.setBook(transaction.getBook());

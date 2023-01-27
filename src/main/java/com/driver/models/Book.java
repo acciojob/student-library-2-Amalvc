@@ -4,16 +4,12 @@ package com.driver.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+
 
 
 @Entity
-@Data
-@Builder
-@AllArgsConstructor
 public class Book {
 
     @Id
@@ -41,7 +37,7 @@ public class Book {
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("book")
-    private List<Transaction> transactions;
+    private List<Transaction> transactions=new ArrayList<>();
 
     public Book() {
     }
@@ -49,6 +45,63 @@ public class Book {
         this.name=name;
         this.genre=genre;
         this.author=author;
+        this.available=true;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public boolean isAvailable() {
+        return available;
     }
 }
 
